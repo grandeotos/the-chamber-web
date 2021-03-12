@@ -19,7 +19,7 @@
       <div class="ind-login-box">
         <div class="ind-login-text">
           <img src="img/indra2.png " class="img-fluid" alt="Logo Indra">
-          <h2>Registro</h2>
+          <h2>Admin Panel</h2>
         </div>
         <br>
         <div class="container-fluid">
@@ -38,9 +38,8 @@
           <button type="button" class="btn btn-secondary">
             <i class="fas fa-times-circle"></i> Quitar selección
           </button>
-          <button type="button" class="btn btn-info" onclick="javascript:window.location.href='LoginPanel.html';">
-            <i class="fas fa-sign-out-alt"></i>
-            Cerrar sesión
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#logOut">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
           </button>
         </div>
         <br>
@@ -438,7 +437,7 @@
             </tbody>
           </table>
         </div>
-        
+
       </div>
       <div class="formbutton">
 
@@ -611,6 +610,33 @@
             onclick="javascript:window.location.href='RegistPanel.html';">
             <i class="fas fa-sign-out-alt"></i>
             Ir al panel de aplicantes
+          </button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            <i class="fas fa-check-circle"></i>
+            Seguir en este portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="logOut" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>
+            <i class="fas fa-sign-out-alt"> </i> Cerrar sesión
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2>¿Deseas cerrar sesión?</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+            onclick="javascript:window.location.href='LoginPanel.html';">
+            <i class="fas fa-sign-out-alt"></i>
+            Cerrar sesión
           </button>
           <button type="button" class="btn btn-success" data-bs-dismiss="modal">
             <i class="fas fa-check-circle"></i>
