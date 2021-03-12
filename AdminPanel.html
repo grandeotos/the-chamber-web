@@ -22,8 +22,8 @@
           <h2>Registro</h2>
         </div>
         <br>
-        <div>
-          <button type="button" class="btn btn-primary">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNew">
             <i class="fas fa-user-plus"></i> Crear nuevo GID
           </button>
           <button type="button" class="btn btn-danger">
@@ -41,7 +41,7 @@
           <button type="button" class="btn btn-info" onclick="javascript:window.location.href='LoginPanel.html';">
             <i class="fas fa-sign-out-alt"></i>
             Cerrar sesión
-            </button>
+          </button>
         </div>
         <br>
         <table class="table table-hover table-dark">
@@ -88,7 +88,7 @@
 
   <!-- Modal -->
   <div class="modal fade" id="infoModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel"><i class=" fas fa-info-circle"></i> Información del candidato
@@ -216,6 +216,47 @@
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="createNew" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-plus"></i> Crear nuevo GID</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">E-mail del candidato a enviar el GamerID</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">Por favor, verifique la direccion de correo antes de enviar.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">GamerID a enviar</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" value="MXA01751038"
+                readonly="readonly">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Enviar copia a correo Minsait</label>
+            </div>
+            <button type="submit" class="btn btn-success">Enviar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+            onclick="javascript:window.location.href='RegistPanel.html';">
+            <i class="fas fa-sign-out-alt"></i>
+            Ir al panel de aplicantes
+          </button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+            <i class="fas fa-check-circle"></i>
+            Seguir en este portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer>
     <!-- Copyright -->
     <div class="text-center p-3">

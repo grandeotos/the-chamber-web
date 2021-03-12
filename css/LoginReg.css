@@ -35,7 +35,5 @@
 
 
 .downFoot{
-    align-content: center !important;
-    color: black;
-    background-color: wheat;
+    margin: 10px;
 }
