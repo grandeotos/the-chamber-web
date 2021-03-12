@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chamber - Control Panel</title>
+    <!-- CSS Externo-->
+    <link rel="stylesheet" href="css/Dashboard.css"/>
+    <link rel="stylesheet" href="css/all.css"/>
+    <link rel="stylesheet" href="css/fontawesome.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="body-bcolor">
+    <div class="holamundo">
+        <div class="container">
+            <div class="ind-login-box">
+                <div class="ind-login-text">
+                    <img src="img/indra2.png " class="img-fluid" alt="Logo Indra">
+                </div>
+              </div>
+                <div class="formbutton">
+                    <table class="table table-hover table-dark">
+                        <tbody>
+                        <thead>
+                          <tr>
+                            <th scope="col">PlayerID</th>
+                            <th scope="col">Nombre(s)</th>
+                            <th scope="col">Apellido(s)</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Descargas</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row"><input type="checkbox" name="brand"> 1</th>
+                            <td>Cargador</td>
+                            <td>Olivas Cordova</td>
+                            <td>NO</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="far fa-file-pdf"></i>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-file-csv"></i>
+                                </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><input type="checkbox" name="brand"> 2</th>
+                            <td>Juan JP</td>
+                            <td>Yañez Gonzalez</td>
+                            <td>INVALIDO</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="far fa-file-pdf"></i>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-file-csv"></i>
+                                </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><input type="checkbox" name="brand"> 3</th>
+                            <td>Jonathan Nyan</td>
+                            <td>Maya Cat</td>
+                            <td>LOWN'T</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="far fa-file-pdf"></i>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-file-csv"></i>
+                                </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><input type="checkbox" name="brand"> 4</th>
+                            <td>Eduardo</td>
+                            <td>Palenque Rodriguez</td>
+                            <td>100/100</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="far fa-file-pdf"></i>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-file-csv"></i>
+                                </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><input type="checkbox" name="brand"> 5</th>
+                            <td>Juan Luis</td>
+                            <td>Grande OTOS</td>
+                            <td>EN ESPERA</td>
+                            <td>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="far fa-file-pdf"></i>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-file-csv"></i>
+                                </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table> 
+                </div>
+        </div>
+            </div>
+        </div>
+
+
+    
+        <!-- Modal -->
+    <div class="modal fade" id="aplicanteModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN APLICANTE!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Este panel es para empleados de Minsait, probablemente estes aquí por error</p>
+                    <p>Da click al botón de <b>"Ir al panel de aplicantes"</b> para poder ingresar al portal correspondiente para tí</p>
+                    <p>Si eres empleado de Minsait, estas en el portal correcto, y solo da clic al botón de <b>"Seguir en este portal"</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="javascript:window.location.href='RegistPanel.html';">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Ir al panel de aplicantes
+                    </button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                    <i class="fas fa-check-circle"></i>
+                    Seguir en este portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer>
+      <!-- Copyright -->
+  <div class="text-center p-3">
+    © 2021 Copyright:
+    <b class="text-dark">Team The Chamber</b>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</body>
+</html>

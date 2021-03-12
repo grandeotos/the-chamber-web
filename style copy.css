@@ -1,0 +1,34 @@
+.ind-login-box{
+    padding-top: 20px;
+    margin: 30px;
+    padding: 50px;
+    background-color:rgba(1, 1, 1, 0.3);
+    padding-bottom: 60px;
+    color: white;
+    border-radius: 15px;
+    align-content: center;
+    
+}
+
+.ind-login-box, .ind-login-text{
+    text-align: center;
+    align-content: center;
+    padding-bottom: 10px;
+}
+
+.ind-login-box, labelpass{
+    text-align: left;
+}
+
+.ind-login-box, .ind-lgoin-text{
+    padding-top: 50px;
+    align-content: center;
+}
+
+.body-bcolor{
+    background-color: rgba(22,41,47,1);
+}
+
+.formbutton{
+    padding-bottom: 20px;
+}
