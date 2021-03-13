@@ -24,7 +24,9 @@
                         <div class="ind-login-text">
                             <img src="img/indra2.png " class="img-fluid" alt="Logo Indra">
                             <br>
+                            <br>
                             <h2>Registro</h2>
+                            <br>
                             <p>Si deseas aplicar para un trabajo en Minsait, puedes registrarte en este portal, para
                                 poder ser elegible para aplicar a un test psicometrico, personal de Minsait se pondrá en
                                 contacto contigo en caso de haber vacantes disponibles</p>
@@ -94,15 +96,23 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#registSuccessModal"><i class="fas fa-sign-in-alt"></i> Registrar
-                                    cuenta
-                                </button>
+                                <center>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#registSuccessModal"><i class="fas fa-arrow-circle-up"></i>
+                                        Subir aplicación
+                                    </button>
+                                    <p></p>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#empleadoModal"><i class="fas fa-user-alt"></i>
 
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#aplicanteModal">
-                                    Clic aquí si eres un empleado
-                                </button>
+
+                                        ¿Ya eres un empleado?
+                                    </button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#gamerIdModal"> <i class="fas fa-gamepad"></i>
+                                        ¿Tienes un GamerID?
+                                    </button>
+                                </center>
                             </form>
                         </div>
                     </div>
@@ -147,6 +157,63 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="empleadoModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN EMPLEADO!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Este panel es para aplicantes de "The Chamber", probablemente estes aquí por error</p>
+                    <p>Da click al botón de <b>"Ir al panel de empleados"</b> para poder ingresar al portal
+                        correspondiente para tí</p>
+                    <p>Si eres aplicante de "The Chamber", estas en el portal correcto, y solo da clic al botón de
+                        <b>"Seguir en este portal</b>"</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                        onclick="javascript:window.location.href='LoginPanel.html';">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Ir al panel de empleados
+                    </button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        <i class="fas fa-check-circle"></i>
+                        Seguir en este portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="gamerIdModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-gamepad"></i> Aplica para Minsait</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Este panel es para aplicantes de "The Chamber" que <b>NO</b> tengan un <b>GamerID</b></p>
+                        <p>Da click al botón de <b>"Aplicar con GamerID"</b> para poder ingresar al portal correspondiente y tomar tu test psicometrico</p>
+                        <p>Si quieres aplicar a Minsait <b>SIN</b> un GamerID, estas en el portal correcto, y solo da clic al botón de
+                            <b>"Seguir en este portal</b>" para llenar tus datos y subir tu solicitud</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                            onclick="javascript:window.location.href='RegistPanel.html';">
+                            <i class="fas fa-gamepad"></i> 
+                            Aplicar con GamerID
+                        </button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                            <i class="fas fa-check-circle"></i>
+                            Seguir en este portal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- Modal -->
     <div class="modal fade" id="aplicanteModal" role="dialog">
         <div class="modal-dialog">

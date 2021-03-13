@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Chamber - Control Panel</title>
     <!-- CSS Externo-->
-    <link rel="stylesheet" href="css/LoginReg.css"/>
-    <link rel="stylesheet" href="css/all.css"/>
-    <link rel="stylesheet" href="css/fontawesome.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/LoginReg.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="css/fontawesome.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <script src="js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body class="body-bcolor">
     <div class="row">
         <div class="col-md-3 col-xs-12">
@@ -23,124 +25,169 @@
                             <img src="img/indra2.png " class="img-fluid" alt="Logo Indra">
                             <br>
                             <h2>Alta de aplicantes</h2>
+                            <p>Este portal es para registrarse para poder aplicar el test psicometrico, llenando los datos proporcionados por Minsait</p>
+                            <p>Si quieres aplicar a un trabajo con Minsait, revisa el botón</p><p> "¿No tienes un Gamer ID?"</p>
                         </div>
                         <div class="formbutton">
                             <form role="form">
-                            <div>
-                                <div class="form-group">
-                                    <br>
-                                    <label id="labpass" for="password">CURP </label>
-                                    <input type="password" class="form-control" id="password" 
-                                           placeholder="Ingrese su CURP, EJ ABCD123456EFGHIJ56">
+                                <div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label id="labpass" for="password">CURP </label>
+                                        <input type="text" class="form-control" id="password"
+                                            placeholder="Ingrese su CURP, EJ ABCD123456EFGHIJ56">
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label id="labpass" for="username">Codigo GamerID</label>
+                                        <input type="text" class="form-control" id="username" placeholder="TC123456">
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label id="labpass" for="password">Contraseña</label>
+                                        <input type="password" class="form-control" id="password"
+                                            placeholder="Ingrese su contraseña">
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label id="labpass" for="password">Confirmar contraseña</label>
+                                        <input type="password" class="form-control" id="password"
+                                            placeholder="Repita su contraseña">
+                                    </div>
+                                    <div class="checkbox">
+                                        <br>
+                                        <label>
+                                            <input type="checkbox"> Recordar contraseña (No recomendar en dispositivos
+                                            compartidos)
+                                        </label>
+                                        <p></p>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label id="labpass" for="username">Codigo GamerID</label>
-                                    <input type="text" class="form-control" id="username" 
-                                           placeholder="TC123456">
-                                </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label id="labpass" for="password">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" 
-                                           placeholder="Ingrese su contraseña">
-                                </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label id="labpass" for="password">Confirmar contraseña</label>
-                                    <input type="password" class="form-control" id="password" 
-                                           placeholder="Repita su contraseña">
-                                </div>
-                                <div class="checkbox">
-                                    <br>
-                                    <label>
-                                        <input type="checkbox"> Recordar contraseña (No recomendar en dispositivos compartidos)
-                                    </label>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registSuccessModal"><i class="fas fa-sign-in-alt"></i> Registrar cuenta 
-                            </button>
-    
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#aplicanteModal">
-                                Clic aquí si eres un empleado
-                            </button>
+                                <center>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#registSuccessModal"><i class="fas fa-sign-in-alt"></i>
+                                        Registrar cuenta
+                                    </button>
                             </form>
+                            <p></p>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#empleadoModal"><i class="fas fa-user-alt"></i>
+
+
+                                ¿Ya eres un empleado?
+                            </button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#gamerIdModal"> <i class="fas fa-gamepad"></i>
+                                ¿No tienes un GamerID?
+                            </button>
+                            </center>
                         </div>
-                </div>
                     </div>
                 </div>
             </div>
-            
         </div>
-        <div class="col-md-3 col-xs-12">
-        </div>
+
+    </div>
+    <div class="col-md-3 col-xs-12">
+    </div>
     </div>
 
 
-    
+
+    <!-- Modal -->
+    <div class="modal fade" id="registSuccessModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro completado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tu registro se ha completado de manera exitosa, ahora accede al portal para poder descargar el juego</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        onclick="javascript:window.location.href='Downloads.html';">
+                        <i class="fas fa-download"></i>
+                        Descargar "The Chamber"
+                    </button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        <i class="fas fa-check-circle"></i>
+                        Listo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="empleadoModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN EMPLEADO!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Este panel es para aplicantes de "The Chamber", probablemente estes aquí por error</p>
+                    <p>Da click al botón de <b>"Ir al panel de empleados"</b> para poder ingresar al portal
+                        correspondiente para tí</p>
+                    <p>Si eres aplicante de "The Chamber", estas en el portal correcto, y solo da clic al botón de
+                        <b>"Seguir en este portal</b>"</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                        onclick="javascript:window.location.href='LoginPanel.html';">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Ir al panel de empleados
+                    </button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        <i class="fas fa-check-circle"></i>
+                        Seguir en este portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Modal -->
-        <div class="modal fade" id="registSuccessModal" role="dialog">
+        <div class="modal fade" id="gamerIdModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registro completado</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-gamepad"></i> Aplica para Minsait</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Este panel es para aplicantes de "The Chamber", probablemente estes aquí por error</p>
-                        <p>Da click al botón de <b>"Ir al panel de empleados"</b> para poder ingresar al portal correspondiente para tí</p>
-                        <p>Si eres aplicante de "The Chamber", estas en el portal correcto, y solo da clic al botón de <b>"Seguir en este portal</b>"</p>
+                        <p>Este panel es para aplicantes de "The Chamber" que tengan un <b>GamerID</b>, puede que tengas ganas de aplicar para Minsait</p>
+                        <p>Da click al botón de <b>"Aplicar"</b> para poder ingresar al portal
+                            y subir tu solicitud</p>
+                        <p>Si eres aplicante de "The Chamber" con un GamerID, estas en el portal correcto, y solo da clic al botón de
+                            <b>"Seguir en este portal</b>"</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="javascript:window.location.href='Downloads.html';">
-                        <i class="fas fa-download"></i>
-                        Descargar "The Chamber"
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                            onclick="javascript:window.location.href='RegistSubmitPanel.html';">
+                            <i class="fas fa-arrow-circle-up"></i>
+                            Aplicar
                         </button>
                         <button type="button" class="btn btn-success" data-bs-dismiss="modal">
                             <i class="fas fa-check-circle"></i>
-                            Listo
-                            </button>
+                            Seguir en este portal
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="aplicanteModal" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN EMPLEADO!</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Este panel es para aplicantes de "The Chamber", probablemente estes aquí por error</p>
-                                <p>Da click al botón de <b>"Ir al panel de empleados"</b> para poder ingresar al portal correspondiente para tí</p>
-                                <p>Si eres aplicante de "The Chamber", estas en el portal correcto, y solo da clic al botón de <b>"Seguir en este portal</b>"</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal" onclick="javascript:window.location.href='LoginPanel.html';">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Ir al panel de empleados
-                                </button>
-                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-                                <i class="fas fa-check-circle"></i>
-                                Seguir en este portal
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<footer>
-      <!-- Copyright -->
-  <div class="text-center p-3">
-    © 2021 Copyright:
-    <b class="text-dark">Team The Chamber</b>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
+    <footer>
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            © 2021 Copyright:
+            <b class="text-dark">Team The Chamber</b>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 </body>
+
 </html>
