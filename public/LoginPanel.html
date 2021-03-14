@@ -26,7 +26,7 @@
                             <h2>Admin Panel</h2>
                         </div>
                         <div class="formbutton">
-                                <form role="form" action="auth" method="POST">
+                            <form role="form" action="auth" method="POST">
                                 <div>
                                     <div class="form-group">
                                         <br>
@@ -48,19 +48,23 @@
                                 </div>-->
                                     <div class="form-group">
                                         <br>
-                                        <input type="submit" class="btn btn-primary" value="Ingresar">
+                                        <button type="submit" class="btn btn-primary"
+                                            onclick="location.href='AdminPanel.html'"><i class="fas fa-sign-in-alt"></i>
+                                            Entrar a panel
+                                        </button>
                                     </div>
                                     <p></p>
                                 </div>
                             </form>
-                            <button type="button" class="btn btn-primary" onclick="location.href='AdminPanel.html'"><i
-                                    class="fas fa-sign-in-alt"></i> Entrar a panel
-                            </button>
+                            <div class="container-fluid">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#aplicanteInfo"> <i class="fas fa-question-circle"></i>
 
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#aplicanteModal"><i class="fas fa-user-alt"></i>
-                                ¿Eres o quieres ser un aplicante?
-                            </button>
+
+                                    ¿Eres aplicante o deseas aplicar?
+                                </button>
+                            </div>
+
 
                         </div>
                     </div>
@@ -76,40 +80,86 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="aplicanteModal" role="dialog">
+    <div class="modal fade" id="aplicanteInfo" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN APLICANTE!</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><b>Atención aplicante</b></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>Este panel es para empleados de Minsait, probablemente estes aquí por error</p>
-                    <p>Da click al botón de <b>"Ir al panel de aplicantes"</b> para poder ingresar al portal
-                        correspondiente para tí</p>
+                    <p>Da click al botón de <b>"Registrar (GamerID)"</b> para poder ingresar al portal
+                        de registro para poder jugar al juego "The Chamber"</p>
                     <p>Si eres empleado de Minsait, estas en el portal correcto, y solo da clic al botón de <b>"Seguir
                             en este portal"</b></p>
+                    <p>Si no tienes idea de lo que es un GamerID, pero deseas aplicar para trabajar con Minsait, solo da
+                        clic al botón<b>"¿Qué es un GamerID? / Aplicar"</b></p>
+                </div>
+                <div class="modal-footer">
+                    <p></p>
+                    <div style="text-align:center; align-content:center">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal"><i
+                                class="fas fa-check-circle"></i>
+                            Seguir en este portal
+                        </button>
+                    </div>
+                    <br>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal"
+                            data-bs-target="#gamerIdInfo"> <i class="fas fa-arrow-circle-up"></i>
+                            ¿Qué es un GamerID? / Aplicar
+                        </button>
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                            onclick="javascript:window.location.href='RegistPanel.html';">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Registrar (GamerID)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="gamerIdInfo" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-gamepad"></i> Aplica para Minsait
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Este es un panel administrativo para empleados de Minsait, para un juego llamado "The Chamber",
+                        pero puede que desees aplicar para trabajar con nosotros</p>
+                    <p>Con esto empezarás un proceso y se te asignará un GamerID despues de registrarte</p>
+                    <p>Este GamerID es un identificador para poder registrarte y acceder a "The Chamber", donde jugar este juego es parte del proceso de un apliante a Minsait</p>
+                    <p>Da click al botón de <b>"Aplicar"</b> para poder ingresar al portal
+                        y subir tu solicitud</p>
+                    <p>Si eres aplicante y ya cuentas con un GamerID, accede al portal de registro dando clic al
+                        botón de
+                        "<b>Registrar (GamerID)</b>"</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
-                        onclick="javascript:window.location.href='RegistPanel.html';">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Ir al panel de aplicantes
+                        onclick="javascript:window.location.href='RegistSubmitPanel.html';">
+                        <i class="fas fa-arrow-circle-up"></i>
+                        Aplicar
                     </button>
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-                        <i class="fas fa-check-circle"></i>
-                        Seguir en este portal
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                        onclick="javascript:window.location.href='RegistPanel.html';">
+                        <i class="fas fa-gamepad"></i>
+                        Registrar (GamerID)
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <footer>
+    <footer class="text-light">
         <!-- Copyright -->
         <div class="text-center p-3">
             © 2021 Copyright:
-            <b class="text-dark">Team The Chamber</b>
+            <b>Chayomix Studios</b>
         </div>
         <!-- Copyright -->
     </footer>

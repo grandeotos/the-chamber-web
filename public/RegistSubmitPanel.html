@@ -28,41 +28,41 @@
                             <h2>Registro</h2>
                             <br>
                             <p>Si deseas aplicar para un trabajo en Minsait, puedes registrarte en este portal, para
-                                poder ser elegible para aplicar a un test psicometrico, personal de Minsait se pondrá en
-                                contacto contigo en caso de haber vacantes disponibles</p>
+                                poder ser elegible para realizar un test psicometrico<br><br>Personal de Minsait se pondrá en
+                                contacto contigo en caso de haber vacantes disponibles, y se te dará un GamerID e instrucciones para poder jugar a "The Chamber"<br><br>Por favor, llena tus datos en el siguiente formulario:</p>
                         </div>
                         <div class="formbutton">
-                            <form role="form">
+                            <form role="form" action="newApplicant" method="POST">
                                 <div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="password">Nombre(s)</label>
                                         <input type="text" class="form-control" id="name"
-                                            placeholder="Ingrese su(s) nombre(s)">
+                                            name="firstName" placeholder="Ingrese su(s) nombre(s)">
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="password">Apellidos(s)</label>
                                         <input type="text" class="form-control" id="last"
-                                            placeholder="Ingrese su(s) Apellido(s)">
+                                        name="lastName" placeholder="Ingrese su(s) Apellido(s)">
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="password">E-mail</label>
                                         <input type="email" class="form-control" id="password"
-                                            placeholder="Ingrese su e-mail">
+                                            name="email" placeholder="Ingrese su e-mail">
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="password">Telefono</label>
                                         <input type="tel" class="form-control" id="password"
-                                            placeholder="Ingrese su telefono">
+                                        name="telephone" placeholder="Ingrese su telefono">
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="select">Seleccione su experiencia</label>
                                         <br>
-                                        <select name="browser" class="form-control">
+                                        <select name="experience" class="form-control">
                                             <option>Sin experiencia</option>
                                             <option>Becas</option>
                                             <option>Menos de 5 años</option>
@@ -75,7 +75,7 @@
                                         <label id="labpass" for="select">Seleccione su perfil</label>
                                         <br>
                                         <input type="text" list="careers" class="form-control" />
-                                        <datalist id="careers">
+                                        <datalist name="careers"  id="careers">
                                             <option>Agencia digital</option>
                                             <option>Arquitecturas</option>
                                             <option>Big Data</option>
@@ -97,15 +97,13 @@
                                 </div>
                                 <br>
                                 <center>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#registSuccessModal"><i class="fas fa-arrow-circle-up"></i>
-                                        Subir aplicación
+                                        Enviar solicitud
                                     </button>
                                     <p></p>
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#empleadoModal"><i class="fas fa-user-alt"></i>
-
-
+                                        data-bs-target="#empleadoWarn"><i class="fas fa-user-tie"></i>
                                         ¿Ya eres un empleado?
                                     </button>
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
@@ -158,11 +156,11 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="empleadoModal" role="dialog">
+    <div class="modal fade" id="empleadoWarn" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN EMPLEADO!</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Atencion empleado</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -195,9 +193,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Este panel es para aplicantes de "The Chamber" que <b>NO</b> tengan un <b>GamerID</b></p>
-                        <p>Da click al botón de <b>"Aplicar con GamerID"</b> para poder ingresar al portal correspondiente y tomar tu test psicometrico</p>
-                        <p>Si quieres aplicar a Minsait <b>SIN</b> un GamerID, estas en el portal correcto, y solo da clic al botón de
+                        <p>Este panel es para aplicantes de "The Chamber" que <b>NO</b> tengan un <b>GamerID</b>, pero que dessen aplicar para un puesto de trabajo en Minsait</p>
+                        <p>Da click al botón de <b>"Registro (GamerID)"</b> para poder ingresar al portal correspondiente para poder jugar a "The Chamber" y seguir con tu proceso de selección</p>
+                        <p>Si quieres aplicar a Minsait <b>pero no tienes o no sabes que es un GamerID</b>, estas en el portal correcto, y solo da clic al botón de
                             <b>"Seguir en este portal</b>" para llenar tus datos y subir tu solicitud</p>
                     </div>
                     <div class="modal-footer">
@@ -214,45 +212,15 @@
                 </div>
             </div>
         </div>
-    <!-- Modal -->
-    <div class="modal fade" id="aplicanteModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¡ATENCIÓN EMPLEADO!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Este panel es para aplicantes de "The Chamber", probablemente estes aquí por error</p>
-                    <p>Da click al botón de <b>"Ir al panel de empleados"</b> para poder ingresar al portal
-                        correspondiente para tí</p>
-                    <p>Si eres aplicante de "The Chamber", estas en el portal correcto, y solo da clic al botón de
-                        <b>"Seguir en este portal</b>"</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
-                        onclick="javascript:window.location.href='LoginPanel.html';">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Ir al panel de empleados
-                    </button>
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
-                        <i class="fas fa-check-circle"></i>
-                        Seguir en este portal
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <footer>
+    <footer class="text-light">
         <!-- Copyright -->
         <div class="text-center p-3">
             © 2021 Copyright:
-            <b class="text-dark">Team The Chamber</b>
+            <b>Chayomix Studios</b>
         </div>
         <!-- Copyright -->
     </footer>
-    <!-- Footer -->
 </body>
 
 </html>

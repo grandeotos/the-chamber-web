@@ -20,8 +20,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.listen(3000, ()=>{
-    console.log("Server iniciado en el pueto 300");
+app.listen(42069, ()=>{
+    console.log("Server iniciado en el pueto 42069");
 });
 
 app.get('/', function(request, response) {
