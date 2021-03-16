@@ -32,7 +32,7 @@
                                 contacto contigo en caso de haber vacantes disponibles, y se te dará un GamerID e instrucciones para poder jugar a "The Chamber"<br><br>Por favor, llena tus datos en el siguiente formulario:</p>
                         </div>
                         <div class="formbutton">
-                            <form role="form" action="newApplicant" method="POST">
+                            <form role="form" action="appReg" method="POST">
                                 <div>
                                     <div class="form-group">
                                         <br>
@@ -56,42 +56,42 @@
                                         <br>
                                         <label id="labpass" for="password">Telefono</label>
                                         <input type="tel" class="form-control" id="password"
-                                        name="telephone" placeholder="Ingrese su telefono">
+                                        name="telep" placeholder="Ingrese su telefono">
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="select">Seleccione su experiencia</label>
                                         <br>
-                                        <select name="experience" class="form-control">
-                                            <option>Sin experiencia</option>
-                                            <option>Becas</option>
-                                            <option>Menos de 5 años</option>
-                                            <option>Más de 5 años</option>
-                                            <option>Gestión</option>
+                                        <select name="exper" class="form-control">
+                                            <option value="Sin experiencia">Sin experiencia</option>
+                                            <option value="Becas">Becas</option>
+                                            <option value="Menos de 5 años">Menos de 5 años</option>
+                                            <option value="Más de 5 años">Más de 5 años</option>
+                                            <option value="Gestión">Gestión</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <br>
                                         <label id="labpass" for="select">Seleccione su perfil</label>
                                         <br>
-                                        <input type="text" list="careers" class="form-control" />
+                                        <input type="text" name="profix" list="careers" class="form-control" />
                                         <datalist name="careers"  id="careers">
-                                            <option>Agencia digital</option>
-                                            <option>Arquitecturas</option>
-                                            <option>Big Data</option>
-                                            <option>Ciberseguridad</option>
-                                            <option>Consultoría ERP</option>
-                                            <option>Consultoría Estratégica y de Negocio</option>
-                                            <option>Consultoría Funcional</option>
-                                            <option>Consultoría Tecnológica</option>
-                                            <option>DataScience & AI</option>
-                                            <option>Desarrollo de Software</option>
-                                            <option>Hardware y Comunicaciones</option>
-                                            <option>Perfiles Corporativos</option>
-                                            <option>QA & Testing</option>
-                                            <option>Sistemas/BBDD/Redes</option>
-                                            <option>Soporte a Usuarios y Operación</option>
-                                            <option>Otros</option>
+                                            <option value="Agencia digital"></option>
+                                            <option value="Arquitecturas"></option>
+                                            <option value="Big Data"></option>
+                                            <option value="Ciberseguridad"></option>
+                                            <option value="Consultoría ERP"></option>
+                                            <option value="Consultoría Estratégica y de Negocio"></option>
+                                            <option value="Consultoría Funcional"></option>
+                                            <option value="Consultoría Tecnológica"></option>
+                                            <option value="DataScience & AI"></option>
+                                            <option value="Desarrollo de Software"></option>
+                                            <option value="Hardware y Comunicaciones"></option>
+                                            <option value="Perfiles Corporativos"></option>
+                                            <option value="QA & Testing"></option>
+                                            <option value="Sistemas/BBDD/Redes"></option>
+                                            <option value="Soporte a Usuarios y Operación"></option>
+                                            <option value="Otros"></option>
                                         </datalist>
                                     </div>
                                 </div>
