@@ -44,7 +44,9 @@ module.exports.AuthUser = (request, response) => {
 }
 
 module.exports.SetCheckPoint = (request,response) => {
-    
+    var body = request.body;
+    var AuthQuery = 'SELECT * FROM accounts WHERE username = ? AND password = sha2(?,224) AND rolid > 0';
+    connection.   
 }
 
 
