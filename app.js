@@ -104,7 +104,7 @@ app.post('/auth', function (request, response) {
     var username = request.body.username;
     var password = request.body.password;
     if (username && password) {
-        connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+        connection.query('SELECT * FROM accounts WHERE username = ? AND password = sha2(?,224) AND rolid > 0', [username, password], function (error, results, fields) {
             if (results.length > 0) {
                 request.session.loggedin = true;
                 request.session.username = username;
@@ -149,13 +149,11 @@ app.post('/appReg', function (request, response) {
         response.end();
     }
 });
-*/
 app.post('/gidReg', function (request, response) {
-    var elbody = request.body;
-    var curp = request.body.curp;
     var nombre = request.body.firstName;
     var apellidos = request.body.lastName;
-    var username = request.body.gamerID;
+    var curp = request.body.curp;
+    var username = request.body.username;
     var password = request.body.password;
     var password2 = request.body.password2;
     var email = request.body.email;
@@ -173,13 +171,10 @@ app.post('/gidReg', function (request, response) {
                         response.send("Registro exitoso!");
 
                     }
-
-                    response.end();
                 });
         } else {
             response.send("Falta algun dato, REVISAR " + " CURP :" + curp + " Nombres :" + nombre + " Apellidos :" + apellidos + " gamerID/username :" + username + " Password1 :" + password + " Password2 :" + password2 + " email :" + email);
         }
-        response.end();
     }
 });
 
@@ -190,4 +185,4 @@ app.get('/home', function (request, response) {
         response.send('Please login to view this page!');
     }
     response.end();
-});
+});*/
