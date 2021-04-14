@@ -1,9 +1,12 @@
-const e = require('express');
-const { response } = require('express');
+const express = require('express');
+const { response, json } = require('express');
 var mysql = require('mysql');
-var config = require('../helpers/config');
-var connection = mysql.createConnection(config);
-
+const jwt = require('jsonwebtoken');
+const jwtconfig = require('../config/jwt');
+var session = require('express-session');
+const { user } = require('../helpers/config');
+var sqlconfig = require('../helpers/config');
+var connection = mysql.createConnection(sqlconfig);
 //Devuelve todos los registros de autos
 /*
 module.exports.plants_list = (request, response) => {
@@ -28,11 +31,56 @@ module.exports.get_plant = (request, response) => {
     });
 }*/
 
+
+module.exports.HelloApi = (request, response) => {
+    const Bienvenido = 'API hecha con <3 por Chayomix Studios';
+    response.json(Bienvenido);
+}
+
 module.exports.AuthUser = (request, response) => {
-    var body = request.body;
-    var AuthQuery = 'SELECT * FROM accounts WHERE username = ? AND password = sha2(?,224) AND rolid > 0';
+    var username = request.body.username;
+    var password = request.body.password;
+    var AuthQuery = 'SELECT accountId, username FROM account WHERE username = ? AND password = sha2(?,224) AND rolid > 0';
     connection.query(AuthQuery,
-        [body],
+        [username, password],
+        (error, results, fields)=>{
+            if(error){
+                response.json(error)
+            }
+            else{
+                if(results[0] == null){
+                    response.json({
+                        error: "Usuario no existe o contraseña incorrecta, Revisse credenciales"
+                    });
+                }
+                else{
+                    console.log(results[0].accountId);
+                    const payload = {
+                        id: results[0].accountId,
+                        user: request.body.username
+                    }
+            
+                    const token = jwt.sign(payload, jwtconfig.key, {
+                        expiresIn: 7200
+                    });
+                    console.log(results);
+                    console.log(typeof(results));
+                    (results[0]).mensaje = "Autenticado";
+                    (results[0]).token = token;
+                    response.json(results[0]);
+                }
+                
+            }
+        });
+}
+
+module.exports.SubmitTest = (request, response) => {
+    console.log(request)
+    var accountId = request.body.accountId;
+    console.log(accountId);
+    var AuthQuery = 'INSERT INTO `test` (`idpruebas`, `accountId`, `timeStamp`) VALUES (NULL, ?, current_timestamp())';
+    connection.query(AuthQuery,
+        accountId,
         (error, results, fields)=>{
             if(error){
                 response.send(error);
@@ -44,12 +92,24 @@ module.exports.AuthUser = (request, response) => {
 }
 
 module.exports.SetCheckPoint = (request,response) => {
-    var body = request.body;
-    var AuthQuery = 'SELECT * FROM accounts WHERE username = ? AND password = sha2(?,224) AND rolid > 0';
-    connection.   
+    var idcheckpointType = request.body.idCheckpointType;
+    var idPrueba = request.body.idPrueba;
+	var score = request.body.score;
+    console.log(idcheckpointType, idPrueba, score)
+    var CheckPointQuery = 'INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `idcheckpointType`, `score`, `timeStamp`) VALUES (NULL, ?, ?, ?, current_timestamp())';
+    connection.query(CheckPointQuery,
+        [idPrueba, idcheckpointType, score],
+        (error, results, fields)=>{
+            if(error){
+                response.send(error);
+            }
+            else{
+                response.json(results);
+            }
+        });
 }
 
-
+/*
 module.exports.insert_planta = (request, response) => {
     //request.body contiene los datos del auto en
     //formato JSON -> se lo envia al cliente
@@ -66,3 +126,4 @@ module.exports.insert_planta = (request, response) => {
         }
     });
 }
+*/
