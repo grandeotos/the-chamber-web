@@ -33,8 +33,9 @@ module.exports.get_plant = (request, response) => {
 
 
 module.exports.HelloApi = (request, response) => {
-    const Bienvenido = 'API hecha con <3 por Chayomix Studios';
-    response.json(Bienvenido);
+    response.json({
+        mensaje : "API hecha con <3 por Chayomix Studios"
+    });
 }
 
 module.exports.AuthUser = (request, response) => {
@@ -86,7 +87,13 @@ module.exports.SubmitTest = (request, response) => {
                 response.send(error);
             }
             else{
-                response.json(results);
+                //console.log(fields);
+                //response.json(results);
+                response.json({
+                    mensaje: "Prueba creada correctamente",
+                    affectedRows: results.affectedRows,
+                    insertId: results.insertId
+                });
             }
         });
 }
@@ -96,15 +103,20 @@ module.exports.SetCheckPoint = (request,response) => {
     var idPrueba = request.body.idPrueba;
 	var score = request.body.score;
     console.log(idcheckpointType, idPrueba, score)
-    var CheckPointQuery = 'INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `idcheckpointType`, `score`, `timeStamp`) VALUES (NULL, ?, ?, ?, current_timestamp())';
-    connection.query(CheckPointQuery,
+    var CheckPointInsert = 'INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `idcheckpointType`, `score`, `timeStamp`) VALUES (NULL, ?, ?, ?, current_timestamp())';
+    var CheckPointQuery = 'SELECT * FROM `checkpoints` WHERE checkpointid = ?'
+    connection.query(CheckPointInsert,
         [idPrueba, idcheckpointType, score],
         (error, results, fields)=>{
             if(error){
                 response.send(error);
             }
             else{
-                response.json(results);
+                response.json({
+                    mensaje: "Checkpoint creado correctamente",
+                    affectedRows: results.affectedRows,
+                    insertId: results.insertId
+                });
             }
         });
 }
