@@ -92,21 +92,25 @@ module.exports.SubmitTest = (request, response) => {
                 response.json({
                     mensaje: "Prueba creada correctamente",
                     affectedRows: results.affectedRows,
-                    insertId: results.insertId
+                    pruebaId: results.insertId
                 });
             }
         });
 }
 
 module.exports.SetCheckPoint = (request,response) => {
-    var idcheckpointType = request.body.idCheckpointType;
-    var idPrueba = request.body.idPrueba;
-	var score = request.body.score;
-    console.log(idcheckpointType, idPrueba, score)
-    var CheckPointInsert = 'INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `idcheckpointType`, `score`, `timeStamp`) VALUES (NULL, ?, ?, ?, current_timestamp())';
+    var idprueba = request.body.idprueba;
+    var score = request.body.score;
+    var maxScore = request.body.maxScore;
+    var idsoftSkill = request.body.idsoftSkill;
+    var idlevel = request.body.idlevel;
+    var idPuzzle = request.body.idPuzzle;
+    var timeElapsed = request.body.timeElapsed;
+    console.log(idprueba, score)
+    var CheckPointInsert = 'INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `score`, `maxScore`, `idsoftSkill`, `idlevel`, `idPuzzle`, `timeElapsed`, `timeStamp`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, current_timestamp());';
     var CheckPointQuery = 'SELECT * FROM `checkpoints` WHERE checkpointid = ?'
     connection.query(CheckPointInsert,
-        [idPrueba, idcheckpointType, score],
+        [idprueba,score,maxScore,idsoftSkill,idlevel,idPuzzle,timeElapsed],
         (error, results, fields)=>{
             if(error){
                 response.send(error);
