@@ -1,17 +1,17 @@
 import random
 
-niveles = ["T", "2", "3" , "4", "F"]
+testId = 1
+levelsAmount = 5
+puzzlesAmount = 6
+softSkillsAmount = 4
+timeElapsedMin = 123
+timeElapsedMax = 7200 
+scoreMin = 20
+scoreMax = 100
 
-skills = ["T", "L", "R", "I"]
-# 
-# 
-# while(True):
-#     print(sql1 + "N" + random.choice(niveles) + "P" + str(random.randrange(1, 6)) + random.choice(skills) + sql3)
 
-
-
-for i in range(1, 5):
-    for j in range(1, 7):
-        for k in range(1, 6):
-            print("INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `score`, `maxScore`, `idsoftSkill`, `idlevel`, `idPuzzle`, `timeElapsed`, `timeStamp`) VALUES (NULL, '1','" + str(random.randrange(0,100)) + "','" + str(100) + "','" + str(k) + "','" + str(i) + "','" + str(j) + "','" + str(random.randrange(60,1200)) + "', current_timestamp());")
+for level in range(1, levelsAmount + 1):
+    for puzzle in range(1, puzzlesAmount + 1):
+        for softSkill in range(1, softSkillsAmount + 1):
+            print("INSERT INTO `checkpoints` (`checkpointid`, `test_testId`, `checkpointScore`, `checkpointMaxScore`, `softSkillId`, `levelId`, `puzzleId`, `timeElapsed`, `timeStamp`) VALUES (NULL, '" +  str(testId) + "','" + str(random.randrange(0,100)) + "','" + str(100) + "','" + str(softSkill) + "','" + str(level) + "','" + str(puzzle) + "','" + str(random.randrange(60,1200)) + "', current_timestamp());")
         

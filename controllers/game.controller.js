@@ -79,7 +79,7 @@ module.exports.SubmitTest = (request, response) => {
     console.log(request)
     var accountId = request.body.accountId;
     console.log(accountId);
-    var AuthQuery = 'INSERT INTO `test` (`idpruebas`, `accountId`, `timeStamp`) VALUES (NULL, ?, current_timestamp())';
+    var AuthQuery = 'INSERT INTO `tests` (`testId`, `accountId`, `testStatus_statusId`, `beganAtTimeStamp`, `duration`, `finishedAtTimeStamp`, `overallScore`) VALUES (NULL, ?, 2, current_timestamp(), NULL, NULL, NULL)';
     connection.query(AuthQuery,
         accountId,
         (error, results, fields)=>{
@@ -98,19 +98,54 @@ module.exports.SubmitTest = (request, response) => {
         });
 }
 
+module.exports.finishTest = (request, response) => {
+    console.log(request)
+    var duration = request.body.duration;
+    var testId = request.body.testId;
+    var overallScore = request.body.overallScore;
+    var scores = [request.body.score1, request.body.score2, request.body.score3, request.body.score4]
+    var durations = [request.body.duration1, request.body.duration2, request.body.duration3, request.body.duration4]
+    console.log(duration);
+    var AuthQuery = 'UPDATE `tests` SET `testStatus_statusId` = 2, `duration` = ?, `overallScore` = ?, `finishedAtTimeStamp` = current_timestamp() WHERE `tests`.`testId` = ?';
+    var Insert = 'INSERT INTO `scores` (`scoreId`, `test_testId`, `softSkill_idsoftSkill`, `softSkillScore`) VALUES (NULL, ?, ?, ?)';
+    
+    connection.query(AuthQuery,
+        [duration, overallScore, testId],
+        (error, results, fields)=>{
+            if(error){
+                response.send(error);
+            }
+            else{
+                for (var i = 1; i < 5; i++) {
+                    connection.query(Insert,
+                        [testId, i, scores[i], durations[i]],
+                        (error, results, fields)=>{
+                            if(error){
+                                console.log(error);
+                            }
+                        });
+                 }
+                response.json({
+                    mensaje: "Prueba finalizada correctamente",
+                    affectedRows: results.affectedRows,
+                });
+            }
+        });
+}
+
 module.exports.SetCheckPoint = (request,response) => {
-    var idprueba = request.body.idprueba;
+    var testId = request.body.testId;
     var score = request.body.score;
     var maxScore = request.body.maxScore;
     var idsoftSkill = request.body.idsoftSkill;
     var idlevel = request.body.idlevel;
     var idPuzzle = request.body.idPuzzle;
     var timeElapsed = request.body.timeElapsed;
-    console.log(idprueba, score)
-    var CheckPointInsert = 'INSERT INTO `checkpoints` (`checkpointid`, `idprueba`, `score`, `maxScore`, `idsoftSkill`, `idlevel`, `idPuzzle`, `timeElapsed`, `timeStamp`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, current_timestamp());';
-    var CheckPointQuery = 'SELECT * FROM `checkpoints` WHERE checkpointid = ?'
+    console.log(testId, score)
+    var CheckPointInsert = 'INSERT INTO `checkpoints` (`checkpointId`, `test_testId`, `checkpointScore`, `checkpointMaxScore`, `softSkillId`, `levelId`, `puzzleId`, `timeElapsed`, `timeStamp`) VALUES (NULL, ?, ?, ?, ?, ?, ?, NULL, current_timestamp())';
+    //var CheckPointQuery = 'SELECT * FROM `checkpoints` WHERE checkpointid = ?'
     connection.query(CheckPointInsert,
-        [idprueba,score,maxScore,idsoftSkill,idlevel,idPuzzle,timeElapsed],
+        [testId,score,maxScore,idsoftSkill,idlevel,idPuzzle,timeElapsed],
         (error, results, fields)=>{
             if(error){
                 response.send(error);

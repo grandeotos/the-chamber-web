@@ -34,6 +34,5 @@ router.get('/api', controller.HelloApi)
 router.post('/login', controller.AuthUser)
 router.post('/prueba', controller.SubmitTest);
 router.post('/checkpoint' ,controller.SetCheckPoint);
-//router.post('/prueba',middleware, controller.SubmitTest);
-//router.get('/checkpoint/:id',middleware ,controller.SetCheckPoint);
+router.post('/finish', controller.finishTest);
 module.exports = router;
