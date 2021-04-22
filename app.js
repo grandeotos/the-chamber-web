@@ -1,6 +1,5 @@
 // var (scope global), let (scope especifico)
 
-const express = require('express');
 var mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 var session = require('express-session');
@@ -10,6 +9,10 @@ const sqlconfig = require('./helpers/config');
 const e = require('express');
 var connection = mysql.createConnection(sqlconfig);
 var thechamber = require('./routes/game');
+var express = require('express');
+var router = express.Router();
+var controller = require('./controllers/game.controller');
+
 // clave valor
 const app = express();
 app.set("key", config.key); 
@@ -25,7 +28,7 @@ app.listen(42069, () => {
     console.log("Server iniciado en el pueto 42069");
 });
 
-
+express.Router();
 const middleware = express.Router();
 middleware.use((req, res, next) => {
     const token = req.headers["auth-token"];
@@ -53,32 +56,7 @@ middleware.use((req, res, next) => {
 })
 
 app.use('/game', thechamber)
-/*
-//HTTP GET ** POST
-app.post('/login', (req, res) => {
 
-    if (req.body.user == "grandeotos" && req.body.password == "123123") {
-
-        const payload = {
-            id: 35,
-            user: req.body.user
-        }
-
-        const token = jwt.sign(payload, app.get("key"), {
-            expiresIn: 7200
-        });
-
-        res.json({
-            mensaje: "Correct Auth",
-            token: token
-        });
-    } else {
-        res.json({
-            mensaje: "Auth Failed",
-        })
-    }
-})
-*/
 app.get('/user', middleware, (req, res) => {
     const datos = [{
             id: 1,
@@ -96,23 +74,15 @@ app.get('/user', middleware, (req, res) => {
 
     res.json(datos)
 })
-/*
-app.post('/auth', function (request, response) {
-    var username = request.body.username;
-    var password = request.body.password;
-    if (username && password) {
-        connection.query('SELECT * FROM accounts WHERE username = ? AND password = sha2(?,224) AND rolid > 0', [username, password], function (error, results, fields) {
-            if (results.length > 0) {
-                request.session.loggedin = true;
-                request.session.username = username;
-                response.redirect('/home');
-            } else {
-                response.send('Incorrect Username and/or Password! ' + username + " " + password);
-            }
-            response.end();
-        });
-    } else {
-        response.send('Please enter Username and Password! ' + username + " " + password);
-        response.end();
-    }
-});*/
+
+app.get('/', (req, res) => {
+    res.json({
+        mensaje : "Este sitio esta arriba, ve a /api"
+    });
+})
+
+app.get('/api', controller.HelloApi)
+app.post('/login', controller.AuthUser)
+app.post('/prueba', controller.SubmitTest);
+app.post('/checkpoint' ,controller.SetCheckPoint);
+app.post('/finish', controller.finishTest);
