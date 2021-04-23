@@ -12,6 +12,7 @@ var thechamber = require('./routes/game');
 var express = require('express');
 var router = express.Router();
 var controller = require('./controllers/game.controller');
+const { PORT = 42069 } = process.env
 
 // clave valor
 const app = express();
@@ -24,8 +25,8 @@ app.use(session({
 
 app.use(express.json());
 
-app.listen(42069, () => {
-    console.log("Server iniciado en el pueto 42069");
+app.listen(PORT, () => {
+    console.log(`Server iniciado en el pueto ${PORT}`);
 });
 
 express.Router();
