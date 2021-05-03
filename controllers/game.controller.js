@@ -10,14 +10,16 @@ var connection = mysql.createConnection(sqlconfig);
 
 module.exports.HelloApi = (request, response) => {
     response.json({
-        mensaje : "API hecha con <3 por Chayomix Studios"
+        mensaje : "API hecha con <3 por Chayomix Studios",
+        version : "TheChamberAPI v1.21 BUILD 3 @ 30042021 11:00 CDT"
     });
 }
 
 module.exports.AuthUser = (request, response) => {
     var username = request.body.username;
     var password = request.body.password;
-    var AuthQuery = 'SELECT accountId, username FROM account WHERE username = ? AND password = sha2(?,224) AND rolid > 0';
+    var AuthQuery = 'SELECT accountId, username FROM account WHERE username = ? AND (rolid = 1 OR rolid = 6 OR rolid = 7) AND password = sha2(?,224)';
+    var GameQuery = 'SELECT accountId, username FROM account WHERE username = ? AND (rolid = 0 OR rolid = 2 OR rolid = 3 OR rolid = 4 OR rolid = 5) AND password = sha2(?,224)';
     connection.query(AuthQuery,
         [username, password],
         (error, results, fields)=>{
@@ -26,9 +28,25 @@ module.exports.AuthUser = (request, response) => {
             }
             else{
                 if(results[0] == null){
-                    response.json({
-                        error: "Usuario no existe o contraseña incorrecta, Revisse credenciales"
-                    });
+                    connection.query(GameQuery,
+                        [username, password],
+                        (error, results, fields)=>{
+                            if(error){
+                                response.send(error);
+                            }
+                            else{
+                                if(results[0] == null){
+                                    response.json({
+                                        error: "Usuario no existe o contraseña incorrecta, Revisse credenciales y vuelve a intentar de nuevo"
+                                    });
+                                }else{
+                                    response.json({
+                                        error: "Usuario no autorizado para hacer pruebas. Prueba finalizada anteriormente, o usuario sin registrar sus datos. Entre a TheChamberWeb para completar su registro"
+                                    });
+                                }
+                                
+                            }
+                        });
                 }
                 else{
                     console.log(results[0].accountId);
@@ -79,12 +97,10 @@ module.exports.finishTest = (request, response) => {
     var duration = request.body.duration;
     var testId = request.body.testId;
     var overallScore = request.body.overallScore;
-    var scores = [request.body.score1, request.body.score2, request.body.score3, request.body.score4]
-    var durations = [request.body.duration1, request.body.duration2, request.body.duration3, request.body.duration4]
-    console.log(duration);
-    var AuthQuery = 'UPDATE `tests` SET `testStatus_statusId` = 2, `duration` = ?, `overallScore` = ?, `finishedAtTimeStamp` = current_timestamp() WHERE `tests`.`testId` = ?';
-    var Insert = 'INSERT INTO `scores` (`scoreId`, `test_testId`, `softSkill_idsoftSkill`, `softSkillScore`) VALUES (NULL, ?, ?, ?)';
-    
+    var scores = [request.body.score1, request.body.score2]
+    var durations = [request.body.duration1, request.body.duration2]
+    var AuthQuery = 'UPDATE `tests` SET `testStatus_statusId` = 3, `duration` = ?, `overallScore` = ?, `finishedAtTimeStamp` = current_timestamp() WHERE `tests`.`testId` = ?';
+    var Insert = 'INSERT INTO `scores` (`scoreId`, `test_testId`, `softSkill_idsoftSkill`, `softSkillScore`) VALUES (NULL, ?, ?, ?)';    
     connection.query(AuthQuery,
         [duration, overallScore, testId],
         (error, results, fields)=>{
@@ -92,12 +108,21 @@ module.exports.finishTest = (request, response) => {
                 response.send(error);
             }
             else{
-                for (var i = 1; i < 5; i++) {
+                for (var i = 1; i <= 2; i++) {
                     connection.query(Insert,
-                        [testId, i, scores[i], durations[i]],
+                        [testId, (i), scores[i-1], durations[i-1]],
                         (error, results, fields)=>{
+                            console.log("Holaaa")
+                            console.log(i)
+                            console.log(scores[i-1])
+                            console.log(durations[i-1])
                             if(error){
-                                console.log(error);
+                                console
+                                console.error(error)
+                                response.send(error);
+                            }else{
+                                console.log(results)
+                                console.log(fields)
                             }
                         });
                  }

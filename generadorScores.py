@@ -1,8 +1,8 @@
 import random
 
-testId = 1
-softSkillsAmount = 4
-scoreMin = 20
+testId = 2
+softSkillsAmount = 2
+scoreMin = 68
 scoreMax = 101
 
 for softSkill in range(1, softSkillsAmount + 1):

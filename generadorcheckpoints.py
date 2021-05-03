@@ -1,12 +1,12 @@
 import random
 
-testId = 1
-levelsAmount = 5
-puzzlesAmount = 6
-softSkillsAmount = 4
-timeElapsedMin = 123
-timeElapsedMax = 7200 
-scoreMin = 20
+testId = 3
+levelsAmount = 1
+puzzlesAmount = 11
+softSkillsAmount = 2
+timeElapsedMin = 30
+timeElapsedMax = 120
+scoreMin = 68
 scoreMax = 100
 
 

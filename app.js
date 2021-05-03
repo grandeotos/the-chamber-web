@@ -1,21 +1,24 @@
-// var (scope global), let (scope especifico)
-
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 var mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 var session = require('express-session');
-var path = require('path');
 const config = require('./config/jwt');
 const sqlconfig = require('./helpers/config');
-const e = require('express');
 var connection = mysql.createConnection(sqlconfig);
 var thechamber = require('./routes/game');
-var express = require('express');
 var router = express.Router();
 var controller = require('./controllers/game.controller');
-const { PORT = 42069 } = process.env
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express();
 
 // clave valor
-const app = express();
 app.set("key", config.key); 
 app.use(session({
     secret: 'secret',
@@ -24,10 +27,6 @@ app.use(session({
 }));
 
 app.use(express.json());
-
-app.listen(PORT, () => {
-    console.log(`Server iniciado en el pueto ${PORT}`);
-});
 
 express.Router();
 const middleware = express.Router();
@@ -78,7 +77,8 @@ app.get('/user', middleware, (req, res) => {
 
 app.get('/', (req, res) => {
     res.json({
-        mensaje : "Este sitio esta arriba, ve a /api"
+        mensaje : "Este sitio esta arriba, ve a /api",
+        version : "TheChamberAPI v1.21 BUILD 3 @ 30042021 11:00 CDT"
     });
 })
 
@@ -87,3 +87,33 @@ app.post('/login', controller.AuthUser)
 app.post('/prueba', controller.SubmitTest);
 app.post('/checkpoint' ,controller.SetCheckPoint);
 app.post('/finish', controller.finishTest);
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+
+module.exports = app;
